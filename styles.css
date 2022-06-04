@@ -44,3 +44,20 @@ main {
   gap: 20px;
 }
 
+.customize-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.customize-pen {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.eraser-clear {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
