@@ -30,6 +30,7 @@ main {
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
+  align-items: center;
   gap: 150px;
 }
 
