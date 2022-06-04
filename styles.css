@@ -5,7 +5,18 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+h1 {
+  color: yellow;
+}
 
+button {
+  font-weight: bold;
+  background-color: yellow;
+  color: blue;
+  padding: 10px;
+  border:none;
+  border-radius: 5px;
+}
 
 
 
