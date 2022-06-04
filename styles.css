@@ -29,7 +29,8 @@ main {
   padding: 40px;
   display: flex;
   flex-direction: row-reverse;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 150px;
 }
 
 .grid-canvas {
