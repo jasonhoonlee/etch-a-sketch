@@ -29,3 +29,9 @@ main {
   padding: 40px;
 }
 
+.grid-canvas {
+  width: 500px;
+  height: 500px;
+  background-color: white;
+}
+
