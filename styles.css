@@ -79,6 +79,10 @@ input#grid-size::-webkit-slider-thumb {
   background: yellow;
 }
 
+.grid-box-size {
+  color: yellow;
+  font-size: 15px;
+}
 
 .customize-pen {
   display: flex;
@@ -98,9 +102,6 @@ input#grid-size::-webkit-slider-thumb {
   border-radius: 5px;
 }
 
-.grid-box-size {
-  color: yellow;
-}
 
 .clear {
   background-color: midnightblue;
