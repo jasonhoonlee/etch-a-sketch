@@ -79,3 +79,9 @@ main {
   padding: 20px;
   border-radius: 5px;
 }
+
+.clear {
+  background-color: midnightblue;
+  color: yellow;
+  border: solid 2px yellow;
+}
