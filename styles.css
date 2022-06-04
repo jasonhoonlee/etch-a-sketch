@@ -80,6 +80,10 @@ main {
   border-radius: 5px;
 }
 
+.grid-box-size {
+  color: yellow;
+}
+
 .clear {
   background-color: midnightblue;
   color: yellow;
