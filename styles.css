@@ -33,6 +33,12 @@ main {
   gap: 150px;
 }
 
+.grid {
+  background-color: rgba(72, 58, 135);
+  padding: 20px;
+  border-radius: 5px;
+}
+
 .grid-canvas {
   width: 500px;
   height: 500px;
