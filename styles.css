@@ -27,6 +27,9 @@ header {
 
 main {
   padding: 40px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
 }
 
 .grid-canvas {
