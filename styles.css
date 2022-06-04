@@ -117,3 +117,20 @@ input#grid-size::-webkit-slider-thumb {
   border: solid 2px yellow;
 }
 
+/* grid styles */
+.grid-canvas {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex: 1;
+}
+
+.cell {
+  flex: 1;
+  border: 1px dotted darkgrey;
+}
+
+
