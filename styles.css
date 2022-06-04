@@ -33,6 +33,13 @@ main {
   gap: 150px;
 }
 
+h3 {
+  color: yellow;
+  font-size: 15px;
+  text-align: center;
+  margin: 0px;
+}
+
 .grid {
   background-color: rgba(72, 58, 135);
   padding: 20px;
@@ -108,3 +115,4 @@ input#grid-size::-webkit-slider-thumb {
   color: yellow;
   border: solid 2px yellow;
 }
+
