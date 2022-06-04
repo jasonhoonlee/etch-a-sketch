@@ -130,7 +130,7 @@ input#grid-size::-webkit-slider-thumb {
 
 .cell {
   flex: 1;
-  border: 1px dotted darkgrey;
+  border: 0.5px solid darkgrey;
 }
 
 
