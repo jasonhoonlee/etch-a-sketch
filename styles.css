@@ -44,6 +44,11 @@ main {
   gap: 20px;
 }
 
+.side-bar {
+  display: flex;
+  align-items: center;
+}
+
 .customize-grid {
   display: flex;
   flex-direction: column;
