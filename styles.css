@@ -63,6 +63,23 @@ main {
   text-align: center;
 }
 
+input#grid-size {
+  -webkit-appearance: none;
+  background: yellow;
+  height: 2px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+input#grid-size::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background: yellow;
+}
+
+
 .customize-pen {
   display: flex;
   flex-direction: column;
