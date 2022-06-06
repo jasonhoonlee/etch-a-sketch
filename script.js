@@ -1,7 +1,7 @@
 const gridCanvas = document.querySelector('.grid-canvas');
 const slider = document.querySelector('.grid-range');
 const gridBackgroundColor = document.querySelector('.grid-background-color .color-picker');
-
+const gridLineColor = document.querySelector('.grid-color .color-picker');
 
 //create rows
 function createGridRows(gridSize) {
@@ -37,6 +37,14 @@ function updateGridBackground(color) {
   gridCanvas.style.backgroundColor = color;
 }
 
+function updateGridLineColor(color) {
+  const cells = document.querySelectorAll('.cell');
+  cells.forEach(cell => {
+    cell.style.borderColor = color;
+  })
+
+}
+
 
 //event handlers
 slider.addEventListener('input', e => {
@@ -51,9 +59,10 @@ gridBackgroundColor.addEventListener('input', e => {
   updateGridBackground(gridBackgroundColor);
 })
 
-
-
-
+gridLineColor.addEventListener('input', e => {
+  const gridColor = e.target.value;
+  updateGridLineColor(gridColor);
+})
 
 createGridRows(32);
 
