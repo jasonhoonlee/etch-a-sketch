@@ -1,6 +1,6 @@
 const gridCanvas = document.querySelector('.grid-canvas');
 const slider = document.querySelector('.grid-range');
-const gridBackgroundColor = document.querySelector('.color-picker');
+const gridBackgroundColor = document.querySelector('.grid-background-color .color-picker');
 
 
 //create rows
