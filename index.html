@@ -30,19 +30,26 @@
             <input type="range" min="1" max="64" value="32" class="slider" id="grid-size"><br>
             <label class="grid-box-size">Grid Size: <span class="current-grid-size">32 x 32</span></label>
           </div>
-          <button class="grid-background-color">Background Color <span><input type="color" value="#FFFFFF" class="color-picker"></span></button>
-          <button class="grid-color">Grid Color <span><input type="color" value="#A9A9A9" class="color-picker"></span></button>
+          <ul class="grid-color-options">
+            <li class="grid-background-color">Background Color <span><input type="color" value="#FFFFFF" class="color-picker"></span></li>
+            <li class="grid-color">Grid Color <span><input type="color" value="#A9A9A9" class="color-picker"></span></li>
+          </ul>
           <button class="hide-grid-lines">Hide Grid Lines</button>
+
         </div>
         <h3>Pen</h3>
         <div class="sketch-tools customize-pen">
-          <button class="color">Color <span><input type="color" class="color-picker"></span></button>
-          <button class="rainbow-mode">Rainbow Mode</button>
+          <ul class="pen-color-options">
+            <li class="color">Color <span><input type="color" class="color-picker"></span></li>
+            <li class="rainbow-mode">Rainbow Mode</li>
+          </ul>
         </div>
         <h3>Eraser/Clear</h3>
+
         <div class="sketch-tools eraser-clear">
           <button class="eraser">Eraser</button>
           <button class="clear">Clear</button>
+
         </div>
       </div>
      </section>
