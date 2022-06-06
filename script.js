@@ -1,4 +1,5 @@
 const gridCanvas = document.querySelector('.grid-canvas');
+const slider = document.querySelector('.grid-range');
 
 //create rows
 function createGridRows(gridSize) {
@@ -20,6 +21,17 @@ function createGridCells(row, gridSize) {
   }
 }
 
-createGridRows(64);
+
+
+
+slider.addEventListener('click', e => {
+  gridCanvas.innerHTML = '';
+  createGridRows(e.target.value);
+})
+
+createGridRows(32);
+
+
+
 
 
