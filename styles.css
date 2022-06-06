@@ -133,4 +133,9 @@ input#grid-size::-webkit-slider-thumb {
   border: 0.5px solid darkgrey;
 }
 
-
+.color-picker {
+  width: 2em;
+  height: 2em;
+  border: none;
+  padding: 0;
+}
