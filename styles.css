@@ -133,9 +133,24 @@ input#grid-size::-webkit-slider-thumb {
   border: 0.5px solid darkgrey;
 }
 
+/* color pickers */
+button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .color-picker {
+  -webkit-appearance: none;
+  border: none;
   width: 2em;
   height: 2em;
-  border: none;
+}
+
+.color-picker::-webkit-color-swatch-wrapper {
   padding: 0;
+}
+
+.color-picker::-webkit-color-swatch {
+  border: none;
 }
