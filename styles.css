@@ -23,6 +23,12 @@ button, li {
   gap: 10px;
 }
 
+button {
+  background-color: midnightblue;
+  color: yellow;
+  border: solid 2px yellow;
+}
+
 ul {
   margin: 0px;
   padding: 0px;
@@ -128,13 +134,6 @@ input#grid-size::-webkit-slider-thumb {
   border-radius: 5px;
 }
 
-
-.clear {
-  background-color: midnightblue;
-  color: yellow;
-  border: solid 2px yellow;
-}
-
 /* grid styles */
 .grid-canvas {
   display: flex;
@@ -167,3 +166,4 @@ input#grid-size::-webkit-slider-thumb {
 .color-picker::-webkit-color-swatch {
   border: none;
 }
+
