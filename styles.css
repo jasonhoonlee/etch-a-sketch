@@ -10,14 +10,31 @@ h1 {
   font-size: 75px;
 }
 
-button {
+button, li {
   font-weight: bold;
+  font-size: 13px;
   background-color: yellow;
   color: blue;
   padding: 10px;
   border:none;
   border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
+
+ul {
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+li {
+  flex-grow: 1;
+}
+
 
 header {
   text-align: center;
@@ -40,6 +57,7 @@ h3 {
   text-align: center;
   margin: 0px;
 }
+
 
 .grid {
   background-color: rgba(72, 58, 135);
@@ -134,11 +152,6 @@ input#grid-size::-webkit-slider-thumb {
 }
 
 /* color pickers */
-button {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
 
 .color-picker {
   -webkit-appearance: none;
