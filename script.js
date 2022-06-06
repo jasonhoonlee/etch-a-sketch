@@ -1,5 +1,6 @@
 const gridCanvas = document.querySelector('.grid-canvas');
 const slider = document.querySelector('.grid-range');
+const gridBackgroundColor = document.querySelector('.color-picker');
 
 
 //create rows
@@ -22,10 +23,9 @@ function createGridCells(row, gridSize) {
   }
 }
 
-// Updating grid
 function updateGridSizeInfo(size) {
   const currentGridSize = document.querySelector('.current-grid-size');
-  currentGridSize.textContent = `${size} x ${size}`
+  currentGridSize.textContent = `${size} x ${size}`;
 }
 
 function updateGrid(size) {
@@ -33,12 +33,22 @@ function updateGrid(size) {
   createGridRows(size);
 }
 
+function updateGridBackground(color) {
+  gridCanvas.style.backgroundColor = color;
+}
+
+
+//event handlers
 slider.addEventListener('input', e => {
   if (e.target.tagName !== 'INPUT') return;
   const gridSize = e.target.value;
   updateGrid(gridSize);
-  updateGridSizeInfo(gridSize)
+  updateGridSizeInfo(gridSize);
+})
 
+gridBackgroundColor.addEventListener('input', e => {
+  const gridBackgroundColor = e.target.value;
+  updateGridBackground(gridBackgroundColor);
 })
 
 
