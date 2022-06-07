@@ -36,8 +36,9 @@ function updateGridSize(e) {
   createGridRows(gridSize);
 }
 
-function updateGridBackground(color) {
-  gridCanvas.style.backgroundColor = color;
+function updateGridBackground(e) {
+  const gridBackgroundColor = e.target.value;
+  gridCanvas.style.backgroundColor = gridBackgroundColor;
 }
 
 function updateGridLineColor(color) {
@@ -92,12 +93,8 @@ slider.addEventListener('input', e => {
   updateGridSizeInfo(e);
 })
 
-
-
-
 gridBackgroundColor.addEventListener('input', e => {
-  const gridBackgroundColor = e.target.value;
-  updateGridBackground(gridBackgroundColor);
+  updateGridBackground(e);
 })
 
 gridLineColor.addEventListener('input', e => {
