@@ -24,14 +24,16 @@ function createGridCells(row, gridSize) {
   }
 }
 
-function updateGridSizeInfo(size) {
+function updateGridSizeInfo(e) {
+  const gridSize = e.target.value;
   const currentGridSize = document.querySelector('.current-grid-size');
-  currentGridSize.textContent = `${size} x ${size}`;
+  currentGridSize.textContent = `${gridSize} x ${gridSize}`;
 }
 
-function updateGridSize(size) {
+function updateGridSize(e) {
+  const gridSize = e.target.value;
   gridCanvas.innerHTML = '';
-  createGridRows(size);
+  createGridRows(gridSize);
 }
 
 function updateGridBackground(color) {
@@ -86,10 +88,12 @@ function toggleBtnDisable(e) {
 //event handlers
 slider.addEventListener('input', e => {
   if (e.target.tagName !== 'INPUT') return;
-  const gridSize = e.target.value;
-  updateGridSize(gridSize);
-  updateGridSizeInfo(gridSize);
+  updateGridSize(e);
+  updateGridSizeInfo(e);
 })
+
+
+
 
 gridBackgroundColor.addEventListener('input', e => {
   const gridBackgroundColor = e.target.value;
