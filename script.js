@@ -41,10 +41,11 @@ function updateGridBackground(e) {
   gridCanvas.style.backgroundColor = gridBackgroundColor;
 }
 
-function updateGridLineColor(color) {
+function updateGridLineColor(e) {
+  const gridColor = e.target.value;
   const cells = document.querySelectorAll('.cell');
   cells.forEach(cell => {
-    cell.style.borderColor = color;
+    cell.style.borderColor = gridColor;
   });
 }
 
@@ -98,8 +99,7 @@ gridBackgroundColor.addEventListener('input', e => {
 })
 
 gridLineColor.addEventListener('input', e => {
-  const gridColor = e.target.value;
-  updateGridLineColor(gridColor);
+  updateGridLineColor(e);
 })
 
 hideGridLinesBtn.addEventListener('click', e => {
