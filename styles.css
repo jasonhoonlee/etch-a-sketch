@@ -167,3 +167,7 @@ input#grid-size::-webkit-slider-thumb {
   border: none;
 }
 
+
+.disabled {
+  opacity:  0.3;
+}
