@@ -2,7 +2,7 @@ const gridCanvas = document.querySelector('.grid-canvas');
 const slider = document.querySelector('.grid-range');
 const gridBackgroundColor = document.querySelector('.grid-background-color .color-picker');
 const gridLineColor = document.querySelector('.grid-color .color-picker');
-
+const hideGridLinesBtn = document.querySelector('.hide-grid-lines');
 
 //create rows
 function createGridRows(gridSize) {
@@ -42,9 +42,45 @@ function updateGridLineColor(color) {
   const cells = document.querySelectorAll('.cell');
   cells.forEach(cell => {
     cell.style.borderColor = color;
-  })
-
+  });
 }
+
+
+
+function toggleHideGridLines(e) {
+  const btnTextContent = e.target.textContent;
+  if (btnTextContent === 'Hide Grid Lines') {
+    hideGridLinesBtn.textContent = 'Show Grid Lines';
+    updateGridLineColor(gridBackgroundColor.value);
+
+  } else {
+    hideGridLinesBtn.textContent = 'Hide Grid Lines';
+    updateGridLineColor(gridLineColor.value);
+
+  }
+}
+
+
+function toggleBtnDisable(e) {
+  const btnTextContent = e.target.textContent;
+
+  if (btnTextContent === 'Hide Grid Lines') {
+    gridBackgroundColor.disabled = true;
+    gridLineColor.disabled = true;
+
+    gridBackgroundColor.parentElement.parentElement.classList.add('disabled');
+    gridLineColor.parentElement.parentElement.classList.add('disabled');
+
+  } else {
+    gridBackgroundColor.disabled = false;
+    gridLineColor.disabled = false;
+
+    gridBackgroundColor.parentElement.parentElement.classList.remove('disabled');
+    gridLineColor.parentElement.parentElement.classList.remove('disabled');
+
+  }
+}
+
 
 
 //event handlers
@@ -65,7 +101,10 @@ gridLineColor.addEventListener('input', e => {
   updateGridLineColor(gridColor);
 })
 
-
+hideGridLinesBtn.addEventListener('click', e => {
+  toggleBtnDisable(e);
+  toggleHideGridLines(e);
+})
 
 createGridRows(32);
 
