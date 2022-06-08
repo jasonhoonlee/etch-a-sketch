@@ -105,7 +105,6 @@ function toggleDisable(e) {
     gridBackgroundColor.parentElement.parentElement.classList.add('disabled');
     gridLineColor.parentElement.parentElement.classList.add('disabled');
     slider.parentElement.classList.add('disabled');
-    console.log(slider)
 
   } else {
     gridBackgroundColor.disabled = false;
@@ -114,8 +113,7 @@ function toggleDisable(e) {
 
     gridBackgroundColor.parentElement.parentElement.classList.remove('disabled');
     gridLineColor.parentElement.parentElement.classList.remove('disabled');
-    slider.classList.remove('disabled');
-    console.log(slider)
+    slider.parentElement.classList.remove('disabled');
   }
 }
 
