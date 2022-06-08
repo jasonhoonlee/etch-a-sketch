@@ -3,6 +3,7 @@ const slider = document.querySelector('.grid-range');
 const gridBackgroundColor = document.querySelector('.grid-background-color .color-picker');
 const gridLineColor = document.querySelector('.grid-color .color-picker');
 const hideGridLinesBtn = document.querySelector('.hide-grid-lines');
+const penColor = document.querySelector('.pen-color .color-picker');
 
 //create rows
 function createGridRows(gridSize) {
@@ -13,8 +14,39 @@ function createGridRows(gridSize) {
     createGridCells(row, gridSize);
     gridCanvas.appendChild(row);
   }
-
 }
+
+
+
+
+
+function activateGridDrawing() {
+
+  let isDrawing = false;
+
+  gridCanvas.addEventListener('mousedown', e => {
+    isDrawing = true;
+  });
+  gridCanvas.addEventListener('mouseup', e => {
+    isDrawing = false;
+  });
+
+  const cells = document.querySelectorAll('.cell');
+  cells.forEach(cell => {
+    cell.addEventListener('mouseover', e => {
+      if (isDrawing === true) {
+        cell.style.backgroundColor = penColor.value;
+        cell.style.borderColor = penColor.value;
+        cell.classList.add('drawn');
+      }
+    })
+  })
+}
+
+
+
+
+
 
 //create cells
 function createGridCells(row, gridSize) {
@@ -82,7 +114,7 @@ function toggleBtnDisable(e) {
 
     gridBackgroundColor.parentElement.parentElement.classList.remove('disabled');
     gridLineColor.parentElement.parentElement.classList.remove('disabled');
-    slider.classList.remove('disabled')
+    slider.classList.remove('disabled');
 
   }
 }
@@ -94,21 +126,21 @@ slider.addEventListener('input', e => {
   if (e.target.tagName !== 'INPUT') return;
   updateGridSize(e);
   updateGridSizeInfo(e);
-})
+});
 
 gridBackgroundColor.addEventListener('input', e => {
   updateGridBackground(e);
-})
+});
 
 gridLineColor.addEventListener('input', e => {
   const gridColor = e.target.value;
   updateGridLineColor(gridColor);
-})
+});
 
 hideGridLinesBtn.addEventListener('click', e => {
   toggleBtnDisable(e);
   toggleHideGridLines(e);
-})
+});
 
 
 
@@ -118,6 +150,9 @@ hideGridLinesBtn.addEventListener('click', e => {
 
 //initialize app
 createGridRows(32);
+activateGridDrawing()
+
+
 
 
 
