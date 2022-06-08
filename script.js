@@ -13,6 +13,7 @@ function createGridRows(gridSize) {
     createGridCells(row, gridSize);
     gridCanvas.appendChild(row);
   }
+
 }
 
 //create cells
@@ -73,6 +74,7 @@ function toggleBtnDisable(e) {
 
     gridBackgroundColor.parentElement.parentElement.classList.add('disabled');
     gridLineColor.parentElement.parentElement.classList.add('disabled');
+    slider.classList.add('disabled');
 
   } else {
     gridBackgroundColor.disabled = false;
@@ -80,6 +82,7 @@ function toggleBtnDisable(e) {
 
     gridBackgroundColor.parentElement.parentElement.classList.remove('disabled');
     gridLineColor.parentElement.parentElement.classList.remove('disabled');
+    slider.classList.remove('disabled')
 
   }
 }
@@ -106,6 +109,8 @@ hideGridLinesBtn.addEventListener('click', e => {
   toggleBtnDisable(e);
   toggleHideGridLines(e);
 })
+
+
 
 
 
