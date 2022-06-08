@@ -78,7 +78,9 @@ function updateGridBackground(e) {
 function updateGridLineColor(color) {
   const cells = document.querySelectorAll('.cell');
   cells.forEach(cell => {
-    cell.style.borderColor = color;
+    if (!cell.classList.contains('drawn')) {
+      cell.style.borderColor = color;
+    }
   });
 }
 
