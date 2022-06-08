@@ -18,12 +18,9 @@ function createGridRows(gridSize) {
 
 
 
-
-
 function activateGridDrawing() {
 
   let isDrawing = false;
-
   gridCanvas.addEventListener('mousedown', e => {
     isDrawing = true;
   });
@@ -42,9 +39,6 @@ function activateGridDrawing() {
     })
   })
 }
-
-
-
 
 
 
@@ -100,12 +94,13 @@ function toggleHideGridLines(e) {
 }
 
 
-function toggleBtnDisable(e) {
+function toggleDisable(e) {
   const btnTextContent = e.target.textContent;
 
   if (btnTextContent === 'Hide Grid Lines') {
     gridBackgroundColor.disabled = true;
     gridLineColor.disabled = true;
+    slider.disabled = true;
 
     gridBackgroundColor.parentElement.parentElement.classList.add('disabled');
     gridLineColor.parentElement.parentElement.classList.add('disabled');
@@ -114,6 +109,7 @@ function toggleBtnDisable(e) {
   } else {
     gridBackgroundColor.disabled = false;
     gridLineColor.disabled = false;
+    slider.disabled = false;
 
     gridBackgroundColor.parentElement.parentElement.classList.remove('disabled');
     gridLineColor.parentElement.parentElement.classList.remove('disabled');
