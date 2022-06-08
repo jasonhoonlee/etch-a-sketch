@@ -67,6 +67,7 @@ function updateGridSize(e) {
   const gridSize = e.target.value;
   gridCanvas.innerHTML = '';
   createGridRows(gridSize);
+  activateGridDrawing();
 }
 
 function updateGridBackground(e) {
