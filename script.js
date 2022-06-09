@@ -4,6 +4,7 @@ const gridBackgroundColor = document.querySelector('.grid-background-color .colo
 const gridLineColor = document.querySelector('.grid-color .color-picker');
 const hideGridLinesBtn = document.querySelector('.hide-grid-lines');
 const penColor = document.querySelector('.pen-color .color-picker');
+const rainbowModeBtn = document.querySelector('.rainbow-mode');
 
 //create rows
 function createGridRows(gridSize) {
@@ -19,7 +20,6 @@ function createGridRows(gridSize) {
 
 
 function activateGridDrawing() {
-
   let isDrawing = false;
   gridCanvas.addEventListener('mousedown', e => {
     isDrawing = true;
@@ -32,13 +32,21 @@ function activateGridDrawing() {
   cells.forEach(cell => {
     cell.addEventListener('mouseover', e => {
       if (isDrawing === true) {
-        cell.style.backgroundColor = penColor.value;
-        cell.style.borderColor = penColor.value;
+        if (rainbowMode === true) {
+          const randomColor = generateRandomColor();
+          cell.style.backgroundColor = randomColor;
+          cell.style.borderColor = randomColor;
+        } else {
+          cell.style.backgroundColor = penColor.value;
+          cell.style.borderColor = penColor.value;
+        }
         cell.classList.add('drawn');
       }
     })
   })
 }
+
+
 
 
 
@@ -151,7 +159,9 @@ hideGridLinesBtn.addEventListener('click', e => {
   toggleHideGridLines(e);
 });
 
-
+rainbowModeBtn.addEventListener('click', e => {
+  rainbowMode = true;
+})
 
 
 
@@ -160,6 +170,7 @@ hideGridLinesBtn.addEventListener('click', e => {
 
 
 //initialize app
+let rainbowMode = false;
 createGridRows(32);
 activateGridDrawing()
 
