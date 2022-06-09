@@ -171,3 +171,7 @@ input#grid-size::-webkit-slider-thumb {
 .disabled {
   opacity:  0.3;
 }
+
+.active {
+  border-color: red;
+}
