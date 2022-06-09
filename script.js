@@ -87,7 +87,6 @@ function updateGridLineColor(color) {
 }
 
 
-
 function toggleHideGridLines(e) {
   const btnTextContent = e.target.textContent;
   if (btnTextContent === 'Hide Grid Lines') {
@@ -101,6 +100,10 @@ function toggleHideGridLines(e) {
   }
 }
 
+function toggleRainbowMode() {
+  rainbowModeBtn.classList.toggle('active');
+  rainbowMode = !rainbowMode;
+}
 
 function toggleDisable(e) {
   const btnTextContent = e.target.textContent;
@@ -159,9 +162,7 @@ hideGridLinesBtn.addEventListener('click', e => {
   toggleHideGridLines(e);
 });
 
-rainbowModeBtn.addEventListener('click', e => {
-  rainbowMode = true;
-})
+rainbowModeBtn.addEventListener('click', toggleRainbowMode)
 
 
 
