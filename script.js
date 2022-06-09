@@ -118,6 +118,17 @@ function toggleDisable(e) {
 }
 
 
+function generateRandomColor() {
+  let randomColor = Math.floor(Math.random() * 0xFFFFFF).toString(16);
+  if (randomColor.length < 6) {
+    let randomPaddingNumber = Math.floor(Math.random() * 10);
+    randomColor = randomColor.padStart(6, randomPaddingNumber);
+  }
+  randomColor = '#' + randomColor;
+  return randomColor;
+}
+
+
 
 //event handlers
 slider.addEventListener('input', e => {
@@ -139,6 +150,8 @@ hideGridLinesBtn.addEventListener('click', e => {
   toggleDisable(e);
   toggleHideGridLines(e);
 });
+
+
 
 
 
