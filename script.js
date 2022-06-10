@@ -5,6 +5,7 @@ const gridLineColor = document.querySelector('.grid-color .color-picker');
 const hideGridLinesBtn = document.querySelector('.hide-grid-lines');
 const penColor = document.querySelector('.pen-color .color-picker');
 const rainbowModeBtn = document.querySelector('.rainbow-mode');
+const eraserBtn = document.querySelector('.eraser');
 
 //create rows
 function createGridRows(gridSize) {
@@ -16,7 +17,6 @@ function createGridRows(gridSize) {
     gridCanvas.appendChild(row);
   }
 }
-
 
 
 function activateGridDrawing() {
@@ -32,15 +32,36 @@ function activateGridDrawing() {
   cells.forEach(cell => {
     cell.addEventListener('mouseover', e => {
       if (isDrawing === true) {
-        if (rainbowMode === true) {
+
+        if (rainbowMode === true && eraserMode === false) {
+
           const randomColor = generateRandomColor();
           cell.style.backgroundColor = randomColor;
           cell.style.borderColor = randomColor;
+          cell.classList.add('drawn');
+          cell.classList.remove('erased');
+
+        } else if (eraserMode === true) {
+
+          cell.style.backgroundColor = gridBackgroundColor.value;
+          if (showGridLinesMode) {
+            //if showGridLine mode is on, make border color current background color
+            cell.style.borderColor = gridLineColor.value;
+          } else {
+            //if showGridLine mode is off, make border color current gridLine color
+            cell.style.borderColor = gridBackgroundColor.value;
+          }
+          cell.classList.add('erased');
+          cell.classList.remove('drawn');
+
         } else {
           cell.style.backgroundColor = penColor.value;
           cell.style.borderColor = penColor.value;
+
+          cell.classList.add('drawn');
+          cell.classList.remove('erased');
         }
-        cell.classList.add('drawn');
+
       }
     })
   })
@@ -50,7 +71,8 @@ function activateGridDrawing() {
 
 
 
-//create cells
+
+
 function createGridCells(row, gridSize) {
   for (let i = 1; i <= gridSize; i++) {
     const cell = document.createElement('div');
@@ -59,11 +81,13 @@ function createGridCells(row, gridSize) {
   }
 }
 
+
 function updateGridSizeInfo(e) {
   const gridSize = e.target.value;
   const currentGridSize = document.querySelector('.current-grid-size');
   currentGridSize.textContent = `${gridSize} x ${gridSize}`;
 }
+
 
 function updateGridSize(e) {
   const gridSize = e.target.value;
@@ -72,38 +96,58 @@ function updateGridSize(e) {
   activateGridDrawing();
 }
 
+
 function updateGridBackground(e) {
   const gridBackgroundColor = e.target.value;
   gridCanvas.style.backgroundColor = gridBackgroundColor;
 }
 
+
 function updateGridLineColor(color) {
+
   const cells = document.querySelectorAll('.cell');
   cells.forEach(cell => {
     if (!cell.classList.contains('drawn')) {
       cell.style.borderColor = color;
     }
+
+    if (cell.classList.contains('erased')) {
+      // if showGridLine mode is on
+      if (showGridLinesMode === true) cell.style.borderColor = gridLineColor.value;
+      // if showGridLine mode is off
+      else cell.style.borderColor = gridBackgroundColor.value;
+    }
   });
 }
 
 
+
+
 function toggleHideGridLines(e) {
+  // toggle showGridLinesMode
+  showGridLinesMode = !showGridLinesMode;
   const btnTextContent = e.target.textContent;
   if (btnTextContent === 'Hide Grid Lines') {
     hideGridLinesBtn.textContent = 'Show Grid Lines';
     updateGridLineColor(gridBackgroundColor.value);
-
   } else {
     hideGridLinesBtn.textContent = 'Hide Grid Lines';
     updateGridLineColor(gridLineColor.value);
-
   }
 }
+
 
 function toggleRainbowMode() {
   rainbowModeBtn.classList.toggle('active');
   rainbowMode = !rainbowMode;
 }
+
+
+function toggleEraserMode() {
+  eraserBtn.classList.toggle('active');
+  eraserMode = !eraserMode;
+}
+
 
 function toggleDisable(e) {
   const btnTextContent = e.target.textContent;
@@ -162,16 +206,20 @@ hideGridLinesBtn.addEventListener('click', e => {
   toggleHideGridLines(e);
 });
 
+
+
 rainbowModeBtn.addEventListener('click', toggleRainbowMode)
-
-
-
-
+eraserBtn.addEventListener('click', toggleEraserMode)
 
 
 
 //initialize app
 let rainbowMode = false;
+
+
+let eraserMode = false;
+let showGridLinesMode = true;
+
 createGridRows(32);
 activateGridDrawing()
 
