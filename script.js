@@ -7,7 +7,7 @@ const penColor = document.querySelector('.pen-color .color-picker');
 const rainbowModeBtn = document.querySelector('.rainbow-mode');
 const eraserBtn = document.querySelector('.eraser');
 
-//create rows
+
 function createGridRows(gridSize) {
   for (let i = 1; i <= gridSize; i++) {
     const row = document.createElement('div');
@@ -61,14 +61,10 @@ function activateGridDrawing() {
           cell.classList.add('drawn');
           cell.classList.remove('erased');
         }
-
       }
     })
   })
 }
-
-
-
 
 
 
@@ -161,7 +157,7 @@ function toggleDisable(e) {
     gridLineColor.parentElement.parentElement.classList.add('disabled');
     slider.parentElement.classList.add('disabled');
 
-  } else {
+  } else if (btnTextContent === 'Show Grid Lines') {
     gridBackgroundColor.disabled = false;
     gridLineColor.disabled = false;
     slider.disabled = false;
@@ -169,6 +165,26 @@ function toggleDisable(e) {
     gridBackgroundColor.parentElement.parentElement.classList.remove('disabled');
     gridLineColor.parentElement.parentElement.classList.remove('disabled');
     slider.parentElement.classList.remove('disabled');
+
+  }
+
+  if (btnTextContent === 'Eraser') {
+
+    gridBackgroundColor.disabled = !gridBackgroundColor.disabled
+    gridLineColor.disabled = !gridLineColor.disabled;
+    slider.disabled = !slider.disabled;
+    hideGridLinesBtn.disabled = !hideGridLinesBtn.disabled;
+    penColor.disabled = !penColor.disabled;
+    rainbowModeBtn.disabled = !rainbowModeBtn.disabled;
+
+
+    gridBackgroundColor.parentElement.parentElement.classList.toggle('disabled');
+    gridLineColor.parentElement.parentElement.classList.toggle('disabled');
+    slider.parentElement.classList.toggle('disabled');
+    hideGridLinesBtn.classList.toggle('disabled');
+    penColor.parentElement.parentElement.classList.toggle('disabled');
+    rainbowModeBtn.classList.toggle('disabled');
+
   }
 }
 
@@ -185,7 +201,7 @@ function generateRandomColor() {
 
 
 
-//event handlers
+
 slider.addEventListener('input', e => {
   if (e.target.tagName !== 'INPUT') return;
   updateGridSize(e);
@@ -208,20 +224,20 @@ hideGridLinesBtn.addEventListener('click', e => {
 
 
 
-rainbowModeBtn.addEventListener('click', toggleRainbowMode)
-eraserBtn.addEventListener('click', toggleEraserMode)
+rainbowModeBtn.addEventListener('click', toggleRainbowMode);
 
-
+eraserBtn.addEventListener('click', (e) => {
+  toggleEraserMode();
+  toggleDisable(e);
+});
 
 //initialize app
 let rainbowMode = false;
-
-
 let eraserMode = false;
 let showGridLinesMode = true;
 
 createGridRows(32);
-activateGridDrawing()
+activateGridDrawing();
 
 
 
