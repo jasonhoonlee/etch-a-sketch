@@ -148,43 +148,23 @@ function toggleEraserMode() {
 function toggleDisable(e) {
   const btnTextContent = e.target.textContent;
 
-  if (btnTextContent === 'Hide Grid Lines') {
-    gridBackgroundColor.disabled = true;
-    gridLineColor.disabled = true;
-    slider.disabled = true;
+  gridBackgroundColor.disabled = !gridBackgroundColor.disabled
+  gridLineColor.disabled = !gridLineColor.disabled;
+  slider.disabled = !slider.disabled;
 
-    gridBackgroundColor.parentElement.parentElement.classList.add('disabled');
-    gridLineColor.parentElement.parentElement.classList.add('disabled');
-    slider.parentElement.classList.add('disabled');
+  gridBackgroundColor.parentElement.parentElement.classList.toggle('disabled');
+  gridLineColor.parentElement.parentElement.classList.toggle('disabled');
+  slider.parentElement.classList.toggle('disabled');
 
-  } else if (btnTextContent === 'Show Grid Lines') {
-    gridBackgroundColor.disabled = false;
-    gridLineColor.disabled = false;
-    slider.disabled = false;
-
-    gridBackgroundColor.parentElement.parentElement.classList.remove('disabled');
-    gridLineColor.parentElement.parentElement.classList.remove('disabled');
-    slider.parentElement.classList.remove('disabled');
-
-  }
 
   if (btnTextContent === 'Eraser') {
-
-    gridBackgroundColor.disabled = !gridBackgroundColor.disabled
-    gridLineColor.disabled = !gridLineColor.disabled;
-    slider.disabled = !slider.disabled;
     hideGridLinesBtn.disabled = !hideGridLinesBtn.disabled;
     penColor.disabled = !penColor.disabled;
     rainbowModeBtn.disabled = !rainbowModeBtn.disabled;
 
-
-    gridBackgroundColor.parentElement.parentElement.classList.toggle('disabled');
-    gridLineColor.parentElement.parentElement.classList.toggle('disabled');
-    slider.parentElement.classList.toggle('disabled');
     hideGridLinesBtn.classList.toggle('disabled');
     penColor.parentElement.parentElement.classList.toggle('disabled');
     rainbowModeBtn.classList.toggle('disabled');
-
   }
 }
 
