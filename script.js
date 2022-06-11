@@ -233,6 +233,7 @@ eraserBtn.addEventListener('click', () => {
   // if 'showGridLinesMode' is true
   if (showGridLinesMode === false) {
     disableUI(hideGridLinesBtn);
+    disableUI(gridBackgroundColor);
 
   } else {
     gridUIItems.forEach(item => {
