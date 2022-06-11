@@ -145,28 +145,45 @@ function toggleEraserMode() {
 }
 
 
-function toggleDisable(e) {
-  const btnTextContent = e.target.textContent;
-
-  gridBackgroundColor.disabled = !gridBackgroundColor.disabled
-  gridLineColor.disabled = !gridLineColor.disabled;
-  slider.disabled = !slider.disabled;
-
-  gridBackgroundColor.parentElement.parentElement.classList.toggle('disabled');
-  gridLineColor.parentElement.parentElement.classList.toggle('disabled');
-  slider.parentElement.classList.toggle('disabled');
 
 
-  if (btnTextContent === 'Eraser') {
-    hideGridLinesBtn.disabled = !hideGridLinesBtn.disabled;
-    penColor.disabled = !penColor.disabled;
-    rainbowModeBtn.disabled = !rainbowModeBtn.disabled;
 
-    hideGridLinesBtn.classList.toggle('disabled');
-    penColor.parentElement.parentElement.classList.toggle('disabled');
-    rainbowModeBtn.classList.toggle('disabled');
-  }
+
+
+
+// function toggleDisable(e) {
+//   const btnTextContent = e.target.textContent;
+
+//   gridBackgroundColor.disabled = !gridBackgroundColor.disabled
+//   gridLineColor.disabled = !gridLineColor.disabled;
+//   slider.disabled = !slider.disabled;
+
+//   gridBackgroundColor.parentElement.parentElement.classList.toggle('disabled');
+//   gridLineColor.parentElement.parentElement.classList.toggle('disabled');
+//   slider.parentElement.classList.toggle('disabled');
+
+
+//   // if (btnTextContent === 'Eraser') {
+//   //   hideGridLinesBtn.disabled = !hideGridLinesBtn.disabled;
+//   //   penColor.disabled = !penColor.disabled;
+//   //   rainbowModeBtn.disabled = !rainbowModeBtn.disabled;
+
+//   //   hideGridLinesBtn.classList.toggle('disabled');
+//   //   penColor.parentElement.parentElement.classList.toggle('disabled');
+//   //   rainbowModeBtn.classList.toggle('disabled');
+//   // }
+// }
+
+
+function disableUI(element) {
+  element.disabled = !element.disabled;
 }
+
+function greyOutUIBox(element) {
+  element.classList.toggle('disabled');
+}
+
+
 
 
 function generateRandomColor() {
@@ -198,7 +215,7 @@ gridLineColor.addEventListener('input', e => {
 });
 
 hideGridLinesBtn.addEventListener('click', e => {
-  toggleDisable(e);
+
   toggleHideGridLines(e);
 });
 
