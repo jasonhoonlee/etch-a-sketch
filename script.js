@@ -216,6 +216,14 @@ gridLineColor.addEventListener('input', e => {
 
 hideGridLinesBtn.addEventListener('click', e => {
 
+  disableUI(gridBackgroundColor);
+  disableUI(gridLineColor);
+  disableUI(slider);
+
+  greyOutUIBox(gridBackgroundColor.parentElement.parentElement);
+  greyOutUIBox(gridLineColor.parentElement.parentElement);
+  greyOutUIBox(slider.parentElement);
+
   toggleHideGridLines(e);
 });
 
@@ -224,8 +232,9 @@ hideGridLinesBtn.addEventListener('click', e => {
 rainbowModeBtn.addEventListener('click', toggleRainbowMode);
 
 eraserBtn.addEventListener('click', (e) => {
+
   toggleEraserMode();
-  toggleDisable(e);
+
 });
 
 //initialize app
