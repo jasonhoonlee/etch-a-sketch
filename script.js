@@ -6,6 +6,7 @@ const hideGridLinesBtn = document.querySelector('.hide-grid-lines');
 const penColor = document.querySelector('.pen-color .color-picker');
 const rainbowModeBtn = document.querySelector('.rainbow-mode');
 const eraserBtn = document.querySelector('.eraser');
+const clearBtn = document.querySelector('.clear');
 
 
 function createGridRows(gridSize) {
@@ -225,6 +226,10 @@ eraserBtn.addEventListener('click', () => {
   const penCustomizeUI = document.querySelector('.customize-pen');
   greyOutUIBox(gridCustomizeUI);
   greyOutUIBox(penCustomizeUI);
+
+  //disable clear button
+  greyOutUIBox(clearBtn);
+  disableUI(clearBtn);
 
   //check the state before disabling each UI
   const gridUIItems = [slider, gridBackgroundColor, gridLineColor, hideGridLinesBtn];
