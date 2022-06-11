@@ -175,6 +175,10 @@ slider.addEventListener('input', e => {
 
 gridBackgroundColor.addEventListener('input', e => {
   updateGridBackground(e);
+  if (showGridLinesMode === false) {
+    const currentBackGroundColor = e.target.value;
+    updateGridLineColor(currentBackGroundColor);
+  }
 });
 
 gridLineColor.addEventListener('input', e => {
@@ -182,13 +186,19 @@ gridLineColor.addEventListener('input', e => {
   updateGridLineColor(gridColor);
 });
 
+
+
+
+
+
+
 hideGridLinesBtn.addEventListener('click', e => {
 
-  disableUI(gridBackgroundColor);
+  // disableUI(gridBackgroundColor);
   disableUI(gridLineColor);
   disableUI(slider);
 
-  greyOutUIBox(gridBackgroundColor.parentElement.parentElement);
+  // greyOutUIBox(gridBackgroundColor.parentElement.parentElement);
   greyOutUIBox(gridLineColor.parentElement.parentElement);
   greyOutUIBox(slider.parentElement);
 
@@ -197,12 +207,14 @@ hideGridLinesBtn.addEventListener('click', e => {
 
 
 
+
+
+
 rainbowModeBtn.addEventListener('click', () => {
   toggleRainbowMode();
   disableUI(penColor);
   greyOutUIBox(penColor.parentElement.parentElement);
 });
-
 
 
 eraserBtn.addEventListener('click', () => {
