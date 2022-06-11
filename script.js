@@ -144,37 +144,6 @@ function toggleEraserMode() {
   eraserMode = !eraserMode;
 }
 
-
-
-
-
-
-
-
-// function toggleDisable(e) {
-//   const btnTextContent = e.target.textContent;
-
-//   gridBackgroundColor.disabled = !gridBackgroundColor.disabled
-//   gridLineColor.disabled = !gridLineColor.disabled;
-//   slider.disabled = !slider.disabled;
-
-//   gridBackgroundColor.parentElement.parentElement.classList.toggle('disabled');
-//   gridLineColor.parentElement.parentElement.classList.toggle('disabled');
-//   slider.parentElement.classList.toggle('disabled');
-
-
-//   // if (btnTextContent === 'Eraser') {
-//   //   hideGridLinesBtn.disabled = !hideGridLinesBtn.disabled;
-//   //   penColor.disabled = !penColor.disabled;
-//   //   rainbowModeBtn.disabled = !rainbowModeBtn.disabled;
-
-//   //   hideGridLinesBtn.classList.toggle('disabled');
-//   //   penColor.parentElement.parentElement.classList.toggle('disabled');
-//   //   rainbowModeBtn.classList.toggle('disabled');
-//   // }
-// }
-
-
 function disableUI(element) {
   element.disabled = !element.disabled;
 }
@@ -195,7 +164,6 @@ function generateRandomColor() {
   randomColor = '#' + randomColor;
   return randomColor;
 }
-
 
 
 
@@ -229,12 +197,45 @@ hideGridLinesBtn.addEventListener('click', e => {
 
 
 
-rainbowModeBtn.addEventListener('click', toggleRainbowMode);
+rainbowModeBtn.addEventListener('click', () => {
+  toggleRainbowMode();
+  disableUI(penColor);
+  greyOutUIBox(penColor.parentElement.parentElement);
+});
 
-eraserBtn.addEventListener('click', (e) => {
 
+
+eraserBtn.addEventListener('click', () => {
+  //toggle eraser mode
   toggleEraserMode();
+  //grey out UI boxes
+  const gridCustomizeUI = document.querySelector('.customize-grid');
+  const penCustomizeUI = document.querySelector('.customize-pen');
+  greyOutUIBox(gridCustomizeUI);
+  greyOutUIBox(penCustomizeUI);
 
+  //check the state before disabling each UI
+  const gridUIItems = [slider, gridBackgroundColor, gridLineColor, hideGridLinesBtn];
+  const penUIItems = [penColor, rainbowModeBtn];
+
+  // if 'showGridLinesMode' is true
+  if (showGridLinesMode === false) {
+    disableUI(hideGridLinesBtn);
+
+  } else {
+    gridUIItems.forEach(item => {
+      disableUI(item);
+    })
+  }
+
+  // if 'rainbowMode' is true
+  if (rainbowMode) {
+    disableUI(rainbowModeBtn);
+  } else {
+    penUIItems.forEach(item => {
+      disableUI(item);
+    })
+  }
 });
 
 //initialize app
