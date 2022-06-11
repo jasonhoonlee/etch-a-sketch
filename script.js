@@ -46,12 +46,11 @@ function activateGridDrawing() {
 
           cell.style.backgroundColor = gridBackgroundColor.value;
           if (showGridLinesMode) {
-            //if showGridLine mode is on, make border color current background color
             cell.style.borderColor = gridLineColor.value;
           } else {
-            //if showGridLine mode is off, make border color current gridLine color
             cell.style.borderColor = gridBackgroundColor.value;
           }
+
           cell.classList.add('erased');
           cell.classList.remove('drawn');
 
@@ -189,25 +188,16 @@ gridLineColor.addEventListener('input', e => {
 
 
 
-
-
-
-
 hideGridLinesBtn.addEventListener('click', e => {
 
-  // disableUI(gridBackgroundColor);
   disableUI(gridLineColor);
   disableUI(slider);
 
-  // greyOutUIBox(gridBackgroundColor.parentElement.parentElement);
   greyOutUIBox(gridLineColor.parentElement.parentElement);
   greyOutUIBox(slider.parentElement);
 
   toggleHideGridLines(e);
 });
-
-
-
 
 
 
@@ -219,23 +209,20 @@ rainbowModeBtn.addEventListener('click', () => {
 
 
 eraserBtn.addEventListener('click', () => {
-  //toggle eraser mode
+
   toggleEraserMode();
-  //grey out UI boxes
+
   const gridCustomizeUI = document.querySelector('.customize-grid');
   const penCustomizeUI = document.querySelector('.customize-pen');
   greyOutUIBox(gridCustomizeUI);
   greyOutUIBox(penCustomizeUI);
 
-  //disable clear button
   greyOutUIBox(clearBtn);
   disableUI(clearBtn);
 
-  //check the state before disabling each UI
   const gridUIItems = [slider, gridBackgroundColor, gridLineColor, hideGridLinesBtn];
   const penUIItems = [penColor, rainbowModeBtn];
 
-  // if 'showGridLinesMode' is true
   if (showGridLinesMode === false) {
     disableUI(hideGridLinesBtn);
     disableUI(gridBackgroundColor);
@@ -246,7 +233,6 @@ eraserBtn.addEventListener('click', () => {
     })
   }
 
-  // if 'rainbowMode' is true
   if (rainbowMode) {
     disableUI(rainbowModeBtn);
   } else {
@@ -255,6 +241,19 @@ eraserBtn.addEventListener('click', () => {
     })
   }
 });
+
+clearBtn.addEventListener('click', () => {
+
+  const cells = document.querySelectorAll('.cell');
+  cells.forEach(cell => {
+    cell.classList.remove('drawn');
+    cell.classList.remove('erased');
+    cell.style.backgroundColor = gridBackgroundColor.value;
+    if (showGridLinesMode) cell.style.borderColor = gridLineColor.value;
+    else cell.style.borderColor = gridBackgroundColor.value;
+  })
+})
+
 
 //initialize app
 let rainbowMode = false;
