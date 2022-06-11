@@ -105,9 +105,7 @@ function updateGridLineColor(color) {
   cells.forEach(cell => {
     if (!cell.classList.contains('drawn')) {
       cell.style.borderColor = color;
-    }
-
-    if (cell.classList.contains('erased')) {
+    } else if (cell.classList.contains('erased')) {
       // if showGridLine mode is on
       if (showGridLinesMode === true) cell.style.borderColor = gridLineColor.value;
       // if showGridLine mode is off
@@ -170,6 +168,7 @@ function generateRandomColor() {
 slider.addEventListener('input', e => {
   if (e.target.tagName !== 'INPUT') return;
   updateGridSize(e);
+  updateGridLineColor(gridLineColor.value);
   updateGridSizeInfo(e);
 });
 
