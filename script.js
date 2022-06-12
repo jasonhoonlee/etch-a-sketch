@@ -172,6 +172,7 @@ slider.addEventListener('input', e => {
   updateGridSizeInfo(e);
 });
 
+
 gridBackgroundColor.addEventListener('input', e => {
   updateGridBackground(e);
   if (showGridLinesMode === false) {
