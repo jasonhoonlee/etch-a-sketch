@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   padding: 0;
@@ -174,4 +175,21 @@ input#grid-size::-webkit-slider-thumb {
 
 .active {
   border-color: red;
+}
+
+
+footer {
+  display: flex;
+  justify-content: center;
+
+}
+
+footer p{
+  font-size: 20px;
+  color: yellow;
+}
+
+footer img {
+  background-color: yellow;
+  border-radius: 50%;
 }
